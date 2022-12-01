@@ -1,0 +1,7 @@
+<ul>
+    <app-row
+        *ngFor="let todo of todoService.visibleList; index as i"
+        [item]="todo"
+        [rowIndex]="i"
+    ></app-row>
+</ul>
