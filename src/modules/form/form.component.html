@@ -1,0 +1,22 @@
+<div class="formBox">
+    <div class="search">
+        <h2>Поиск</h2>
+        <input name="filter" [(ngModel)]="filter" />
+        <button (click)="todoService.filterText(filter)">Искать</button>
+        <button (click)="todoService.clearFilter()">Отменить поиск</button>
+    </div>
+    <div class="status">
+        <h2>Фильтр по статусу</h2>
+        <select (change)="filterStatus($event)">
+            <option default value="все">все</option>
+            <option value="обычный">обычный</option>
+            <option value="важный">важный</option>
+            <option value="выполненный">выполненный</option>
+        </select>
+    </div>
+    <div class="new">
+        <h2>Ввод</h2>
+        <button (click)="todoService.addToDo(text)">Добавить</button>
+        <input name="text" [(ngModel)]="text" />
+    </div>
+</div>
