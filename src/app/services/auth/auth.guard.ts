@@ -26,7 +26,10 @@ export class AuthGuard implements CanActivate {
         .pipe(
             take(1),
             map((isLoggedIn: boolean) => {
-                if (!isLoggedIn){
+                if(state.url === '/info') {
+                    return true;
+                }
+                else if(!isLoggedIn) {
                     this.router.navigate(['/auth']);
                     return false;
                 }
