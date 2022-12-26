@@ -4,10 +4,16 @@
             <div class="field">
                 <label for="email">Логин</label>
                 <input type="text" formControlName="email" />
+                <div *ngIf="authForm.get('email')?.getError('invalidEmail') && authForm.get('email')?.touched">
+                    {{authForm.get('email')?.getError('invalidEmail')}}
+                </div>
             </div>
             <div class="field">
                 <label for="password">Пароль</label>
                 <input type="password" formControlName="password" />
+                <div *ngIf="authForm.get('password')?.getError('invalidPassword') && authForm.get('password')?.touched">
+                    {{authForm.get('password')?.getError('invalidPassword')}}
+                </div>
             </div>
             <p>
                 <button type="submit">Войти</button>

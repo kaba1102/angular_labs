@@ -39,14 +39,18 @@ export class AuthService {
         return this.loggedIn.asObservable();
     }
 
+    get token() {
+        return localStorage.getItem('auth_token');
+    }
+
     get role() {
         const token = localStorage.getItem('auth_token');
-        return token ? this.getJWT(token, 'role') : ''
+        return token ? this.getJWT(token, 'role') : '';
     }
 
     get expire() {
         const token = localStorage.getItem('auth_token');
-        return token ? this.getJWT(token, 'expire') : ''
+        return token ? this.getJWT(token, 'expire') : '';
     }
 
     constructor(
