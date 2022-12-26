@@ -1,6 +1,9 @@
 <div class="navbar" *ngIf="isLoggedIn$ | async as isLoggedIn">
     <nav>
-        <a routerLink="/main">Главная</a>
-        <a routerLink="/info">Информация</a>
+        <ul class="nav-items">
+            <li><a (click)="onMain()">Главная</a></li>
+            <li><a (click)="onInfo()">Информация</a></li>
+            <li><a (click)="onLogout()">Выйти</a></li>
+        </ul>
     </nav>
 </div>

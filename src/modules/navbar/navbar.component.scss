@@ -1,13 +1,29 @@
 
-.navbar {
-    position: relative;
-    min-height: 5vh;
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: rgb(0, 128, 202);
-    border: 1px solid transparent;
-}
+nav {
+    margin: 7px;
+    background: #00c3ff88;
+    padding: 5px;
 
-.nav:hover {
-    background-color: rgb(87, 188, 247);
+    .nav-items {
+        list-style: none;
+        display: flex;
+
+        li {
+            margin: 2px 10px 2px;
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 20px;
+                position: relative;
+            }
+        }
+
+        li:last-child {
+            position: absolute;
+            right: 20px;
+        }
+
+    }
 }

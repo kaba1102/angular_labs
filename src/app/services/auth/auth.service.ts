@@ -57,19 +57,6 @@ export class AuthService {
         }
     };
 
-    setSession(token: string) {
-        if(this.isLoggedIn) {
-            localStorage.setItem('auth_token', token);
-            localStorage.setItem('user_name', this.getJWT(token, 'role'));
-            localStorage.setItem('user_expire', this.getJWT(token, 'expire'));
-        } else {
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('user_name');
-            localStorage.removeItem('user_expire');
-        }
-
-    };
-
 
     login(body: {email: string, password: string}) {
         return this.http
@@ -78,7 +65,9 @@ export class AuthService {
             map((res) => {
                 if (res.token) {
                     this.loggedIn.next(true)
-                    this.setSession(res.token);
+                    localStorage.setItem('auth_token', res.token);
+                    localStorage.setItem('user_name', this.getJWT(res.token, 'role'));
+                    localStorage.setItem('user_expire', this.getJWT(res.token, 'expire'));
                 }
                 return null;
             })
@@ -87,7 +76,9 @@ export class AuthService {
 
     logout() {
         this.loggedIn.next(false)
-        this.setSession('')
-        this.routes.navigate(['auth']);
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('user_name');
+        localStorage.removeItem('user_expire');
+        this.routes.navigate(['/auth']);
     };
 }
