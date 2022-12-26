@@ -39,6 +39,16 @@ export class AuthService {
         return this.loggedIn.asObservable();
     }
 
+    get role() {
+        const token = localStorage.getItem('auth_token');
+        return token ? this.getJWT(token, 'role') : ''
+    }
+
+    get expire() {
+        const token = localStorage.getItem('auth_token');
+        return token ? this.getJWT(token, 'expire') : ''
+    }
+
     constructor(
         private http: HttpClient,
         private routes: Router
@@ -66,8 +76,6 @@ export class AuthService {
                 if (res.token) {
                     this.loggedIn.next(true)
                     localStorage.setItem('auth_token', res.token);
-                    localStorage.setItem('user_name', this.getJWT(res.token, 'role'));
-                    localStorage.setItem('user_expire', this.getJWT(res.token, 'expire'));
                 }
                 return null;
             })
@@ -77,8 +85,6 @@ export class AuthService {
     logout() {
         this.loggedIn.next(false)
         localStorage.removeItem('auth_token');
-        localStorage.removeItem('user_name');
-        localStorage.removeItem('user_expire');
         this.routes.navigate(['/auth']);
     };
 }
