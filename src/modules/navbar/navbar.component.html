@@ -1,1 +1,6 @@
-<p>navbar works!</p>
+<div class="navbar" *ngIf="isLoggedIn$ | async as isLoggedIn">
+    <nav>
+        <a routerLink="/main">Главная</a>
+        <a routerLink="/info">Информация</a>
+    </nav>
+</div>

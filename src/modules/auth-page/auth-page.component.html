@@ -1,15 +1,17 @@
-<div class="container">
-    <form [formGroup]="authForm">
-        <div>
-            <label for="username">Логин</label>
-            <input type="text" formControlName="username" />
-        </div>
-        <div>
-            <label for="password">Пароль</label>
-            <input type="password" formControlName="password" />
-        </div>
-        <p>
-            <button type="submit">Войти</button>
-        </p>
-    </form>
+<div class="wrapper">
+    <div class="container">
+        <form [formGroup]="authForm" (submit)="onSubmit()">
+            <div class="field">
+                <label for="email">Логин</label>
+                <input type="text" formControlName="email" />
+            </div>
+            <div class="field">
+                <label for="password">Пароль</label>
+                <input type="password" formControlName="password" />
+            </div>
+            <p>
+                <button type="submit">Войти</button>
+            </p>
+        </form>
+    </div>
 </div>
