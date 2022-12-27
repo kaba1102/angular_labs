@@ -50,8 +50,8 @@ export class AuthPageComponent implements OnInit {
 
     ngOnInit() {
         this.authForm = this.formBuilder.group({
-            email: ['', Validators.required, this.emailValidator],
-            password: ['', Validators.required, this.passwordValidator]
+            email: ['', [Validators.required, this.emailValidator]],
+            password: ['', [Validators.required, this.passwordValidator]]
         });
     }
 
