@@ -58,6 +58,13 @@ export class AuthService {
         private routes: Router
     ) { }
 
+    delay(ms: number) {
+        return new Promise((resolve, reject) => {
+            setTimeout(resolve, ms);
+        });
+    }
+
+
     getJWT(token: string, name:string): string {
         const obj: ITokenPayload = JSON.parse(atob(token.split('.')[1]))
 

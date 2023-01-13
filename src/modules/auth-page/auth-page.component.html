@@ -11,7 +11,7 @@
             <div class="field">
                 <label for="password">Пароль</label>
                 <input type="password" formControlName="password" />
-                <div *ngIf="authForm.get('password')?.getError('invalidPassword') || authForm.get('password')?.touched">
+                <div *ngIf="authForm.get('password')?.getError('invalidPassword') && authForm.get('password')?.touched">
                     {{authForm.get('password')?.getError('invalidPassword')}}
                 </div>
             </div>

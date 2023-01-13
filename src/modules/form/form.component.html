@@ -19,4 +19,7 @@
         <button (click)="todoService.addToDo(text)">Добавить</button>
         <input name="text" [(ngModel)]="text" />
     </div>
+    <div class="new">
+        <button (click)="todoService.addMonthlyList()">Добавить дефолтные</button>
+    </div>
 </div>
